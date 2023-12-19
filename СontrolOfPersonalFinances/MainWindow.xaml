@@ -17,15 +17,15 @@
         <Label Content="Номер счета/карты :" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="139" Height="33" FontWeight="Bold"/>
         <Label Content="Банк :" HorizontalAlignment="Left" Width="108" Height="24" VerticalAlignment="Top" Margin="10,85,0,0" FontWeight="Bold"/>
         <Label x:Name="label" Content="Баланс :" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="92" Margin="10,48,0,0" FontWeight="Bold"/>
-        <TextBox Margin="143,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" TextChanged="TextBox_TextChanged_1" TextAlignment="{Binding AreAnyTouchesCapturedWithin, ElementName=label, Mode=OneWay}" HorizontalAlignment="Left"/>
-        <TextBox HorizontalAlignment="Left" Margin="72,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <TextBox HorizontalAlignment="Left" Margin="56,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
-        <RadioButton x:Name="Account" Content="Счет" HorizontalAlignment="Left" Margin="78,141,0,0" VerticalAlignment="Top" Height="20" Width="47" Checked="RadioButton_Checked"/>
+        <TextBox x:Name="TextBoxName" Margin="143,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265"  TextAlignment="{Binding AreAnyTouchesCapturedWithin, ElementName=label, Mode=OneWay}" HorizontalAlignment="Left"/>
+        <TextBox x:Name="TextBoxBalance" HorizontalAlignment="Left" Margin="72,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <TextBox x:Name="TextBoxBank" HorizontalAlignment="Left" Margin="56,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
+        <RadioButton x:Name="Account" Content="Счет" HorizontalAlignment="Left" Margin="78,141,0,0" VerticalAlignment="Top" Height="20" Width="47" />
         <RadioButton x:Name="DebtButton" Content="Долг" HorizontalAlignment="Left" Margin="78,161,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="IncomeButton" Content="Доход" HorizontalAlignment="Left" Margin="78,181,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="ExpenditureButton" Content="Расход" HorizontalAlignment="Left" Margin="78,201,0,0" VerticalAlignment="Top"/>
         <Button x:Name="AddButton" Content="Добавить:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Height="30" Width="63" Click="AddButton_Click"/>
-        <ListBox x:Name="ListBox" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <ListBox x:Name="ListBox" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="0,0,0,184"/>
 
     </Grid>
 </Window>

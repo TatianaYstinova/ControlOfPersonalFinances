@@ -11,6 +11,7 @@ namespace СontrolOfPersonalFinances.Logic
         private List<Debt> _debts;//долгов
         private List<Income> _incomes;//доходов
         private List<Expenditure> _expenditures;//расходов
+        private Dictionary<string, string> _purchases;
 
         public AccountClient() 
         { 
@@ -18,6 +19,7 @@ namespace СontrolOfPersonalFinances.Logic
             _debts = new List<Debt>();
             _incomes = new List<Income>();
             _expenditures = new List<Expenditure>();
+            _purchases = new Dictionary<string, string>();
         }
         public void AddAccount(Account account)
         {
@@ -40,7 +42,7 @@ namespace СontrolOfPersonalFinances.Logic
             List<string> accounts = new List<string>();
             foreach (Account account in _accounts)
             {
-                string accountInfo=$"{account.Name} c номером {account.AccountID} с балансом = {account.AccountBalance}р.";
+                string accountInfo=$"{account.Name} c номером {account.TypeBank} с балансом = {account.AccountBalance}р.";
             }
              return accounts;
         }
