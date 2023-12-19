@@ -38,23 +38,24 @@ namespace СontrolOfPersonalFinances
 
             if(!string.IsNullOrEmpty(textBoxValue) )
             {
+                string currentTime = DateTime.Now.ToString("HH:mm:ss");
 
                 // Определяем, какой радиобаттон был выбран
                 if (Account.IsChecked == true)
                 {
-                    selectedItem = $"Счет {textBoxValue} в банке {textBoxBankValue}  баланс {textBoxBalanceValue}р.";
+                    selectedItem = $"[{currentTime}] Счет {textBoxValue} в банке {textBoxBankValue}  баланс {textBoxBalanceValue}р.";
                 }
                 else if (DebtButton.IsChecked == true)
                 {
-                    selectedItem = "Долг" + textBoxValue;
+                    selectedItem = $"[{currentTime}] Долг {textBoxValue}";
                 }
                 else if (IncomeButton.IsChecked == true)
                 {
-                    selectedItem = "Доход" + textBoxValue;
+                    selectedItem = $"[{currentTime}] Доход {textBoxValue}";
                 }
                 else if (ExpenditureButton.IsChecked == true)
                 {
-                    selectedItem = "Расход" + textBoxValue;
+                    selectedItem = $"[{currentTime}] Расход {textBoxValue}";
                 }
                 // Добавляем выбранный элемент в ListBox
                 ListBox.Items.Add(selectedItem);
