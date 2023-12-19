@@ -64,39 +64,74 @@ namespace СontrolOfPersonalFinances
 
         private void OutputOfSheets(object sender, SelectionChangedEventArgs e)
         {
+            if( _accountClient._debts != null )
+            {
+                ListBoxList.ItemsSource += "\r\nДолги :\r\n";
+                foreach (Debt debt in _accountClient._debts)
+                {
+                    ListBoxList.ItemsSource += debt.ToString() + "\r\n";
+                }
+            }
+            if( _accountClient._incomes != null)
+            {
+                ListBoxList.ItemsSource += "\r\nДоходы :\r\n";
+                foreach (Income income in _accountClient._incomes)
+                {
+                    ListBoxList.ItemsSource += income.ToString() + "\r\n";
+                }
+            }
+            if (_accountClient._expenditures != null)
+            {
+                ListBoxList.ItemsSource += "\r\nРасходы :\r\n";
+                foreach (Expenditure expenditure in _accountClient._expenditures)
+                {
+                    ListBoxList.ItemsSource += expenditure.ToString() + "\r\n";
+                }
+            }
+            if (_accountClient._purchases != null)
+            {
+                ListBoxList.ItemsSource += "\r\nПокупки :\r\n";
+                foreach (KeyValuePair<string, string> purchase in _accountClient._purchases)
+                {
+                    ListBoxList.ItemsSource += purchase.Key + ": " + purchase.Value + "\r\n";
+                }
+            }
+
             // Создаем новый элемент и добавляем его в нужный список
             Account newAccount = new Account();
             _accountClient._accounts.Add(newAccount);
 
             // Выводим списки в текстовое поле
-            ListBoxList.ItemsSource = "Счета :\r\n";// перевод строки , табуляция
+            string itemsSource = "";
+          
+            itemsSource = "Счета :\r\n";// перевод строки , табуляция
             foreach (Account account in _accountClient._accounts)
             {
-                ListBoxList.ItemsSource += account.ToString() + "\r\n";
+                itemsSource += account.ToString() + "\r\n";
             }
 
-            ListBoxList.ItemsSource += "\r\nДолги :\r\n";
+            itemsSource += "\r\nДолги :\r\n";
             foreach (Debt debt in _accountClient._debts)
             {
-                ListBoxList.ItemsSource += debt.ToString() + "\r\n";
+                itemsSource += debt.ToString() + "\r\n";
             }
 
-            ListBoxList.ItemsSource += "\r\nДоходы :\r\n";
+            itemsSource += "\r\nДоходы :\r\n";
             foreach (Income income in _accountClient._incomes)
             {
-                ListBoxList.ItemsSource += income.ToString() + "\r\n";
+                itemsSource += income.ToString() + "\r\n";
             }
 
-            ListBoxList.ItemsSource += "\r\nРасходы :\r\n";
+            itemsSource += "\r\nРасходы :\r\n";
             foreach (Expenditure expenditure in _accountClient._expenditures)
             {
-                ListBoxList.ItemsSource += expenditure.ToString() + "\r\n";
+                itemsSource += expenditure.ToString() + "\r\n";
             }
 
-            ListBoxList.ItemsSource += "\r\nПокупки :\r\n";
+            itemsSource += "\r\nПокупки :\r\n";
             foreach (KeyValuePair<string, string> purchase in _accountClient._purchases)
             {
-                ListBoxList.ItemsSource += purchase.Key + ": " + purchase.Value + "\r\n";
+                itemsSource += purchase.Key + ": " + purchase.Value + "\r\n";
 
             }
         }
