@@ -36,7 +36,7 @@ namespace СontrolOfPersonalFinances
             string textBoxBalanceValue = TextBoxBalance.Text.Trim();
             string textBoxBankValue = TextBoxBank.Text.Trim();
 
-            if(!string.IsNullOrEmpty(textBoxValue) )
+            if (!string.IsNullOrEmpty(textBoxValue))//проверка пуст ли текст
             {
                 string currentTime = DateTime.Now.ToString("HH:mm:ss");
 
@@ -59,6 +59,45 @@ namespace СontrolOfPersonalFinances
                 }
                 // Добавляем выбранный элемент в ListBox
                 ListBox.Items.Add(selectedItem);
+            }
+        }
+
+        private void OutputOfSheets(object sender, SelectionChangedEventArgs e)
+        {
+            // Создаем новый элемент и добавляем его в нужный список
+            Account newAccount = new Account();
+            _accountClient._accounts.Add(newAccount);
+
+            // Выводим списки в текстовое поле
+            ListBoxList.ItemsSource = "Счета :\r\n";// перевод строки , табуляция
+            foreach (Account account in _accountClient._accounts)
+            {
+                ListBoxList.ItemsSource += account.ToString() + "\r\n";
+            }
+
+            ListBoxList.ItemsSource += "\r\nДолги :\r\n";
+            foreach (Debt debt in _accountClient._debts)
+            {
+                ListBoxList.ItemsSource += debt.ToString() + "\r\n";
+            }
+
+            ListBoxList.ItemsSource += "\r\nДоходы :\r\n";
+            foreach (Income income in _accountClient._incomes)
+            {
+                ListBoxList.ItemsSource += income.ToString() + "\r\n";
+            }
+
+            ListBoxList.ItemsSource += "\r\nРасходы :\r\n";
+            foreach (Expenditure expenditure in _accountClient._expenditures)
+            {
+                ListBoxList.ItemsSource += expenditure.ToString() + "\r\n";
+            }
+
+            ListBoxList.ItemsSource += "\r\nПокупки :\r\n";
+            foreach (KeyValuePair<string, string> purchase in _accountClient._purchases)
+            {
+                ListBoxList.ItemsSource += purchase.Key + ": " + purchase.Value + "\r\n";
+
             }
         }
 

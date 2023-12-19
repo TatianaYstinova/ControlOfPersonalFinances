@@ -7,11 +7,11 @@ namespace СontrolOfPersonalFinances.Logic
 {
     public class AccountClient
     {
-        private List<Account> _accounts;// cчет
-        private List<Debt> _debts;//долгов
-        private List<Income> _incomes;//доходов
-        private List<Expenditure> _expenditures;//расходов
-        private Dictionary<string, string> _purchases;
+        public List<Account> _accounts;// cчет
+        public List<Debt> _debts;//долгов
+        public List<Income> _incomes;//доходов
+        public List<Expenditure> _expenditures;//расходов
+        public Dictionary<string, string> _purchases;
 
         public AccountClient() 
         { 
