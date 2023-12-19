@@ -28,6 +28,7 @@
         <ListBox x:Name="ListBox" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="0,0,0,242"/>
         <Button x:Name="GetList" Content="Вывести все данные" HorizontalAlignment="Left" Margin="16,244,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.4,0.247" Height="42" Width="149" Click="OutputOfSheets"/>
         <ListBox x:Name="ListBoxList" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,247,0,0"/>
+        <Label x:Name="DebtLa" Content="Label" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" Height="29" Width="80"/>
 
     </Grid>
 </Window>

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
-    public class Account :AAccount
+    public class Credit:ADebt
     {
-       
     }
 }

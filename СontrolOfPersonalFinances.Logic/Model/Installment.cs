@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
-    public class Account :AAccount
-    {
-       
+    public class Installment :ADebt
+    {//рассрочка
+
     }
 }

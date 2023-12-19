@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
-    public class Account :AAccount
-    {
-       
+    public abstract class ADebt : AAccount
+    {//долг
+        public string DataToStart { get;  }
+        public string DataToEnd { get; }
+
     }
 }
