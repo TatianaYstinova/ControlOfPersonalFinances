@@ -25,6 +25,30 @@ namespace СontrolOfPersonalFinances
             InitializeComponent();
         }
 
-        
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            string selectedItem = "";
+
+            // Определяем, какой радиобаттон был выбран
+            if (Account.IsChecked == true)
+            {
+                selectedItem = "Счет";
+            }
+            else if (DebtButton.IsChecked == true)
+            {
+                selectedItem = "Долг";
+            }
+            else if (IncomeButton.IsChecked == true)
+            {
+                selectedItem = "Доход";
+            }
+            else if (ExpenditureButton.IsChecked == true)
+            {
+                selectedItem = "Расход";
+            }
+
+            // Добавляем выбранный элемент в ListBox
+            ListBox.Items.Add(selectedItem);
+        }
     }
 }

@@ -24,7 +24,7 @@
         <RadioButton x:Name="DebtButton" Content="Долг" HorizontalAlignment="Left" Margin="78,161,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="IncomeButton" Content="Доход" HorizontalAlignment="Left" Margin="78,181,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="ExpenditureButton" Content="Расход" HorizontalAlignment="Left" Margin="78,201,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddButton" Content="Добавить:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Height="30" Width="63"/>
+        <Button x:Name="AddButton" Content="Добавить:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Height="30" Width="63" Click="AddButton_Click"/>
         <ListBox x:Name="ListBox" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
 
     </Grid>
