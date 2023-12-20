@@ -34,6 +34,8 @@
         <TextBox x:Name="InterestRateLabelText" HorizontalAlignment="Left" Margin="0,62,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
         <Label x:Name="Term" HorizontalAlignment="Left" Margin="-3,94,0,0" Grid.Row="1" VerticalAlignment="Top" Content="Срок"/>
         <TextBox x:Name="TermLabelText" HorizontalAlignment="Left" Margin="0,113,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
+        <Button x:Name="AccountReportButton" Content="Отчет по счетам" HorizontalAlignment="Left" Margin="287,13,0,0" Grid.Row="1" VerticalAlignment="Top" Height="58" Width="130" FontWeight="Bold" Click="AccountReportButton_Click"/>
+        <ListBox x:Name="AccountReportList" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,148,0,229" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>

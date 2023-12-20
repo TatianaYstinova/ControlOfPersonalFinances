@@ -29,6 +29,7 @@ namespace СontrolOfPersonalFinances
         }
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            string currentTime = DateTime.Now.ToString("HH:mm:ss");
             string selectedItem = "";
 
             if (Account.IsChecked == true)
@@ -41,7 +42,7 @@ namespace СontrolOfPersonalFinances
                 newAccount.Currency = СurrencyLabelText.Text;
 
                 _accountingSystem.accounts.Add(newAccount);
-                ListBoxOne.Items.Add($"Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency}");
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency}");
             }
             else if (Cretdit.IsChecked == true)
             {
@@ -50,11 +51,11 @@ namespace СontrolOfPersonalFinances
                 newCredit.AccountNumber = NumberLabelText.Text;
                 newCredit.BankName = BankLabelText.Text;
                 newCredit.Balance = decimal.Parse(BalansLabelText.Text);
-                newCredit.InterestRate = decimal.Parse(InterestRateLabelText.Text);
+                newCredit.InterestRate = Convert.ToDecimal(InterestRateLabelText.Text);
                 newCredit.Term = int.Parse(TermLabelText.Text);
 
                 _accountingSystem.сredit.Add(newCredit);
-                ListBoxOne.Items.Add($"Тип: {selectedItem}, Номер счета: {newCredit.AccountNumber}, Название банка: {newCredit.BankName}, Баланс: {newCredit.Balance}, Процентная ставка: {newCredit.InterestRate}, Срок: {newCredit.Term}");
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newCredit.AccountNumber}, Название банка: {newCredit.BankName}, Баланс: {newCredit.Balance}, Процентная ставка: {newCredit.InterestRate}, Срок: {newCredit.Term}");
 
             }
             else if (Installment.IsChecked == true)
@@ -67,10 +68,22 @@ namespace СontrolOfPersonalFinances
                 newInstallment.Term = int.Parse(TermLabelText.Text);
 
                 _accountingSystem.installment.Add(newInstallment);
-                ListBoxOne.Items.Add($"Тип: {selectedItem}, Номер счета: {newInstallment.AccountNumber}, Название банка: {newInstallment.BankName}, Баланс: {newInstallment.Balance}, Срок: {newInstallment.Term}");
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newInstallment.AccountNumber}, Название банка: {newInstallment.BankName}, Баланс: {newInstallment.Balance}, Срок: {newInstallment.Term}");
             }
 
         }
+
+        private void AccountReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < _accountingSystem.accounts.Count; i++)
+            {
+                
+            }
+            foreach(var account in _accountingSystem.accounts)
+            {
+
+            }
+        }    
     }
 }
        
