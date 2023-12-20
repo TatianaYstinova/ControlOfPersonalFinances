@@ -13,22 +13,27 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
 
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="84*"/>
+
         </Grid.RowDefinitions>
-        <Label Content="Номер счета/карты :" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="139" Height="33" FontWeight="Bold"/>
-        <Label Content="Банк :" HorizontalAlignment="Left" Width="108" Height="24" VerticalAlignment="Top" Margin="10,85,0,0" FontWeight="Bold"/>
-        <Label x:Name="label" Content="Баланс :" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="92" Margin="10,48,0,0" FontWeight="Bold"/>
-        <TextBox x:Name="TextBoxName" Margin="143,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265"  TextAlignment="{Binding AreAnyTouchesCapturedWithin, ElementName=label, Mode=OneWay}" HorizontalAlignment="Left"/>
-        <TextBox x:Name="TextBoxBalance" HorizontalAlignment="Left" Margin="72,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
-        <TextBox x:Name="TextBoxBank" HorizontalAlignment="Left" Margin="56,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
-        <RadioButton x:Name="Account" Content="Счет" HorizontalAlignment="Left" Margin="78,141,0,0" VerticalAlignment="Top" Height="20" Width="47" />
-        <RadioButton x:Name="DebtButton" Content="Долг" HorizontalAlignment="Left" Margin="78,161,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="IncomeButton" Content="Доход" HorizontalAlignment="Left" Margin="78,181,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="ExpenditureButton" Content="Расход" HorizontalAlignment="Left" Margin="78,201,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddButton" Content="Добавить:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Height="30" Width="63" Click="AddButton_Click"/>
-        <ListBox x:Name="ListBox" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="0,0,0,242"/>
-        <Button x:Name="GetList" Content="Вывести все данные" HorizontalAlignment="Left" Margin="16,244,0,0" VerticalAlignment="Top" RenderTransformOrigin="-7.4,0.247" Height="42" Width="149" Click="OutputOfSheets"/>
-        <ListBox x:Name="ListBoxList" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,247,0,0"/>
-        <Label x:Name="DebtLa" Content="Label" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" Height="29" Width="80"/>
+        <Label x:Name="NumberLabel" Content="Номер счета" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="136" FontWeight="Bold"/>
+        <Label x:Name="BankLabel" Content="Банк :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="106" FontWeight="Bold"/>
+        <Label x:Name="BalansLabel" Content="Баланс" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.156,-1.095" FontWeight="Bold"/>
+        <Label x:Name="СurrencyLabel" Content="Валюта" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="NumberLabelText" HorizontalAlignment="Left" Margin="122,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
+        <TextBox x:Name="BankLabelText" HorizontalAlignment="Left" Margin="122,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
+        <TextBox x:Name="BalansLabelText" HorizontalAlignment="Left" Margin="122,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
+        <TextBox x:Name="СurrencyLabelText" HorizontalAlignment="Left" Margin="122,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
+        <Button x:Name="OkButton" Content="Добавить" HorizontalAlignment="Left" Margin="335,14,0,0" VerticalAlignment="Top" Height="115" Width="92" Click="OkButton_Click"/>
+        <ListBox x:Name="ListBoxOne" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="443,1,10,0" Grid.ColumnSpan="2"/>
+        <RadioButton x:Name="Installment" Content="Рассрочка" HorizontalAlignment="Left" Margin="167,148,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <RadioButton x:Name="Cretdit" Content="Кредит" HorizontalAlignment="Left" Margin="78,148,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <RadioButton x:Name="Account" Content="Cчет" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Grid.RowSpan="2" />
+        <Label x:Name="NumberOfPayments" Content="Процентная ставка" HorizontalAlignment="Left" Margin="-3,36,0,0" Grid.Row="1" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="InterestRateLabelText" HorizontalAlignment="Left" Margin="0,62,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
+        <Label x:Name="Term" HorizontalAlignment="Left" Margin="-3,94,0,0" Grid.Row="1" VerticalAlignment="Top" Content="Срок"/>
+        <TextBox x:Name="TermLabelText" HorizontalAlignment="Left" Margin="0,113,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
 
     </Grid>
 </Window>

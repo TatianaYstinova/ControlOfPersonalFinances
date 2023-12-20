@@ -10,14 +10,34 @@ namespace СontrolOfPersonalFinances.Logic.Model
 {
     public abstract class AAccount : IBankAccount
     {//счет
-
-        public string BankType { get; set; }
-        public string AccountName { get; set; }
+        public abstract decimal _minimumBalance { get; }
+        public abstract decimal _monthlyPayment {  get; }
         public decimal Balance { get; set; }
-        public abstract void AddMoney(decimal amount);
+        public string AccountNumber { get; set; }
+        public string BankName { get; set; }
+        public string Currency { get; set; }
+
+        public void  AddMoney(decimal amount)
+        {
+            if (amount >= GetMonthlyPayment())
+            {
+                Balance += amount;
+            }
+            else
+            {
+                // Oшибка!!
+            }   
+        }
+        
         public abstract void WithdrawalMoney(decimal amount);
-        public abstract decimal GetMinimumBalance();
-        public abstract decimal GetMonthlyPayment();
+        public  decimal GetMinimumBalance()
+        {
+            return _minimumBalance;
+        }
+        public decimal GetMonthlyPayment()
+        {
+            return _monthlyPayment;
+        }
     }  
 }
 

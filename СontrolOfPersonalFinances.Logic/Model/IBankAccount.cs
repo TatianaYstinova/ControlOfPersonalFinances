@@ -8,12 +8,15 @@ namespace СontrolOfPersonalFinances.Logic.Model
 {
     public interface IBankAccount
     {
+        public decimal _minimumBalance { get; }
+        public decimal _monthlyPayment { get; }
         public decimal Balance {  get; set; }
+        public string  AccountNumber {  get; set; }
+        public string BankName { get; set; }
+        public string Currency { get; set; }
         public void AddMoney(decimal amount);
         public void WithdrawalMoney(decimal amount);
-        public decimal GetMinimumBalance();
-        public decimal GetMonthlyPayment();
-        public string  AccountName {  get; set; }
-
+        public decimal GetMinimumBalance();// const
+        public decimal GetMonthlyPayment();// ежемесячный плтеж //const
     }
 }

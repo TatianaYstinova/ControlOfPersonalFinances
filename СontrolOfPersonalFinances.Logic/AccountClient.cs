@@ -5,46 +5,35 @@ using СontrolOfPersonalFinances.Logic.Model;
 
 namespace СontrolOfPersonalFinances.Logic
 {
-//    public class AccountClient
-//    {
-//        public List<Account> _accounts;// cчет
-//        public List<ADebt> _debts;//долгов
-//        public List<Income> _incomes;//доходов
-//        public List<Expenditure> _expenditures;//расходов
-//        public Dictionary<string, string> _purchases;
+    public class AccountClient
+    {
+        public List<Account> _accounts;// cчет
+        public List<ADebt> _debts;//долгов
+       
 
-//        public AccountClient() 
-//        { 
-//            _accounts = new List<Account>();
-//            _debts = new List<ADebt>();
-//            _incomes = new List<Income>();
-//            _expenditures = new List<Expenditure>();
-//            _purchases = new Dictionary<string, string>();
-//        }
-//        public void AddAccount(Account account)
-//        {
-//            _accounts.Add(account);
-//        }
-//        public void AddDebt(ADebt debt)
-//        {
-//            _debts.Add(debt);
-//        }
-//        public void AddIncome(Income income)
-//        {
-//            _incomes.Add(income);
-//        }
-//        public void AddExpenditure(Expenditure expenditure)
-//        {
-//            _expenditures.Add(expenditure);
-//        }
-//        public List<string> GetAllAccountsAsString()
-//        {
-//            List<string> accounts = new List<string>();
-//            foreach (Account account in _accounts)
-//            {
-//                string accountInfo=$"{account.Name} c номером {account.TypeBank} с балансом = {account.AccountBalance}р.";
-//            }
-//             return accounts;
-//        }
-//    }
-//}
+        public AccountClient()
+        {
+            _accounts = new List<Account>();
+            _debts = new List<ADebt>();
+  
+        }
+        public void AddAccount(Account account)
+        {
+            _accounts.Add(account);
+        }
+        public void AddDebt(ADebt debt)
+        {
+            _debts.Add(debt);
+        }
+        
+        public List<string> GetAllAccountsAsString()
+        {
+            List<string> accounts = new List<string>();
+            foreach (Account account in _accounts)
+            {
+                string accountInfo = $"{account.AccountNumber} c номером {account.BankName} с балансом = {account.Balance} с валюте {account.Currency}";
+            }
+            return accounts;
+        }
+    }
+}

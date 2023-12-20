@@ -8,20 +8,21 @@ namespace СontrolOfPersonalFinances.Logic.Model
 {
     public class Installment :ADebt
     {//рассрочка
-
+        public override decimal _minimumBalance { get; }
+        public override decimal _monthlyPayment { get; } 
         public int Term { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public decimal MinimumPayment { get; set; }
-        public override decimal GetMinimumBalance()
+        public virtual decimal GetMinimumBalance()
         {
             return 0;
         }
-        public override decimal GetMonthlyPayment()
+        public virtual decimal GetMonthlyPayment()
         {
-            return 0;
+            return _monthlyPayment;
         }
-        public override void AddMoney(decimal amount)
+        public virtual void AddMoney(decimal amount)
         {
             Balance += amount;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,130 +18,59 @@ using СontrolOfPersonalFinances.Logic.Model;
 
 namespace СontrolOfPersonalFinances
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-//    public partial class MainWindow : Window
-//    {
-//        private AccountClient _accountClient;
-//        public MainWindow()
-//        {
-//            InitializeComponent();
-//            _accountClient = new AccountClient();
-//        }
+    public partial class MainWindow : Window
+    {
+        PersonalFinanceAccountingSystem _accountingSystem { get; set; }
 
-//        private void AddButton_Click(object sender, RoutedEventArgs e)
-//        {
-//            string selectedItem = "";
-//            string textBoxValue = TextBoxName.Text.Trim();
-//            string textBoxBalanceValue = TextBoxBalance.Text.Trim();
-//            string textBoxBankValue = TextBoxBank.Text.Trim();
+        public MainWindow()
+        {
+            InitializeComponent();
+            _accountingSystem = new PersonalFinanceAccountingSystem();
+        }
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            string selectedItem = "";
 
-//            if (!string.IsNullOrEmpty(textBoxValue))//проверка пуст ли текст
-//            {
-//                string currentTime = DateTime.Now.ToString("HH:mm:ss");
+            if (Account.IsChecked == true)
+            {
+                selectedItem = "Счет";
+                Account newAccount = new Account();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = BankLabelText.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = СurrencyLabelText.Text;
 
-//                // Определяем, какой радиобаттон был выбран
-//                if (Account.IsChecked == true)
-//                {
-//                    selectedItem = $"[{currentTime}] Счет {textBoxValue} в банке {textBoxBankValue}  баланс {textBoxBalanceValue}р.";
-//                }
-//                else if (DebtButton.IsChecked == true)
-//                {
-//                    selectedItem = $"[{currentTime}] Долг {textBoxValue}";
+                _accountingSystem.accounts.Add(newAccount);
+                ListBoxOne.Items.Add($"Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency}");
+            }
+            else if (Cretdit.IsChecked == true)
+            {
+                selectedItem = "Кредит";
+                Credit newCredit = new Credit();
+                newCredit.AccountNumber = NumberLabelText.Text;
+                newCredit.BankName = BankLabelText.Text;
+                newCredit.Balance = decimal.Parse(BalansLabelText.Text);
+                newCredit.InterestRate = decimal.Parse(InterestRateLabelText.Text);
+                newCredit.Term = int.Parse(TermLabelText.Text);
 
-//                    ADebt debt = new ADebt();
-//                    debt.DebtID = TextBoxName.Text.Trim();
-//                    debt.AmountDebt = TextBoxBalance.Text.Trim();
-//                    debt.
-//                    _accountClient._debts.Add(debt);
-//                }
-//                else if (IncomeButton.IsChecked == true)
-//                {
-//                    selectedItem = $"[{currentTime}] Доход {textBoxValue}";
-//                }
-//                else if (ExpenditureButton.IsChecked == true)
-//                {
-//                    selectedItem = $"[{currentTime}] Расход {textBoxValue}";
-//                }
-//                // Добавляем выбранный элемент в ListBox
-//                ListBox.Items.Add(selectedItem);
-//            }
-//        }
+                _accountingSystem.сredit.Add(newCredit);
+                ListBoxOne.Items.Add($"Тип: {selectedItem}, Номер счета: {newCredit.AccountNumber}, Название банка: {newCredit.BankName}, Баланс: {newCredit.Balance}, Процентная ставка: {newCredit.InterestRate}, Срок: {newCredit.Term}");
 
-//        private void OutputOfSheets(object sender, SelectionChangedEventArgs e)
-//        {
-//            if( _accountClient._debts != null )
-//            {
-//                ListBoxList.ItemsSource += "\r\nДолги :\r\n";
-//                foreach (ADebt debt in _accountClient._debts)
-//                {
-//                    ListBoxList.ItemsSource += debt.ToString() + "\r\n";
-//                }
-//            }
-//            if (_accountClient._incomes != null)
-//            {
-//                ListBoxList.ItemsSource += "\r\nДоходы :\r\n";
-//                foreach (Income income in _accountClient._incomes)
-//                {
-//                    ListBoxList.ItemsSource += income.ToString() + "\r\n";
-//                }
-//            }
-//            if (_accountClient._expenditures != null)
-//            {
-//                ListBoxList.ItemsSource += "\r\nРасходы :\r\n";
-//                foreach (Expenditure expenditure in _accountClient._expenditures)
-//                {
-//                    ListBoxList.ItemsSource += expenditure.ToString() + "\r\n";
-//                }
-//            }
-//            if (_accountClient._purchases != null)
-//            {
-//                ListBoxList.ItemsSource += "\r\nПокупки :\r\n";
-//                foreach (KeyValuePair<string, string> purchase in _accountClient._purchases)
-//                {
-//                    ListBoxList.ItemsSource += purchase.Key + ": " + purchase.Value + "\r\n";
-//                }
-//            }
+            }
+            else if (Installment.IsChecked == true)
+            {
+                selectedItem = "Рассрочка";
+                Installment newInstallment = new Installment();
+                newInstallment.AccountNumber = NumberLabelText.Text;
+                newInstallment.BankName = BankLabelText.Text;
+                newInstallment.Balance = decimal.Parse(BalansLabelText.Text);
+                newInstallment.Term = int.Parse(TermLabelText.Text);
 
-//            // Создаем новый элемент и добавляем его в нужный список
-//            Account newAccount = new Account();
-//            _accountClient._accounts.Add(newAccount);
+                _accountingSystem.installment.Add(newInstallment);
+                ListBoxOne.Items.Add($"Тип: {selectedItem}, Номер счета: {newInstallment.AccountNumber}, Название банка: {newInstallment.BankName}, Баланс: {newInstallment.Balance}, Срок: {newInstallment.Term}");
+            }
 
-//            // Выводим списки в текстовое поле
-//            string itemsSource = "";
-
-//            itemsSource = "Счета :\r\n";// перевод строки , табуляция
-//            foreach (Account account in _accountClient._accounts)
-//            {
-//                itemsSource += account.ToString() + "\r\n";
-//            }
-
-//            itemsSource += "\r\nДолги :\r\n";
-//            foreach (ADebt debt in _accountClient._debts)
-//            {
-//                itemsSource += debt.ToString() + "\r\n";
-//            }
-
-//            itemsSource += "\r\nДоходы :\r\n";
-//            foreach (Income income in _accountClient._incomes)
-//            {
-//                itemsSource += income.ToString() + "\r\n";
-//            }
-
-//            itemsSource += "\r\nРасходы :\r\n";
-//            foreach (Expenditure expenditure in _accountClient._expenditures)
-//            {
-//                itemsSource += expenditure.ToString() + "\r\n";
-//            }
-
-//            itemsSource += "\r\nПокупки :\r\n";
-//            foreach (KeyValuePair<string, string> purchase in _accountClient._purchases)
-//            {
-//                itemsSource += purchase.Key + ": " + purchase.Value + "\r\n";
-
-//            }
-//        }
-
-//    }
-//}
+        }
+    }
+}
+       

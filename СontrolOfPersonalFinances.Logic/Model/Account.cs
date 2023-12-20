@@ -8,23 +8,12 @@ namespace СontrolOfPersonalFinances.Logic.Model
 {
     public class Account : AAccount
     {
-        public string Currency { get; set; }
-        public override void AddMoney(decimal amount)
-        {
-            Balance += amount;
-        }
+        public override decimal _minimumBalance { get; } = 0;
+        public override decimal _monthlyPayment { get; } = 0;
+
         public override void WithdrawalMoney(decimal amount)
         {
             Balance -= amount;
-        }
-        public override decimal GetMinimumBalance()
-        {
-            return 0;
-        }
-
-        public override decimal GetMonthlyPayment()
-        {
-            return 0;
         }
     }
 }
