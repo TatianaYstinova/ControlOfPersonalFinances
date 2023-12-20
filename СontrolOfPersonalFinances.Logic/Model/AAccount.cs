@@ -8,32 +8,17 @@ using System.Threading.Tasks;
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
-    public abstract class AAccount : IAccount
+    public abstract class AAccount : IBankAccount
     {//счет
-        public abstract string TypeBank { get; set; }
-        public string Name { get; set; }
+
+        public string BankType { get; set; }
+        public string AccountName { get; set; }
         public decimal Balance { get; set; }
-        public abstract decimal MinimumAmount { get; }// мин.сумма
-        public int MonthlyPayment { get; set; }// мес.платеж
-        public  void Addendum(decimal amount)//добавление денег
-        {
-            Balance += amount;
-        }
-        public void Withdrawal(decimal amount)// снять денег
-        {
-            if (Balance > amount)
-            {
-                Balance -= amount;
-
-
-            }
-        }
-        public AAccount(string typeBank, string name, decimal balance,  int monthlyPayment)
-        {
-            TypeBank = typeBank;
-            Name = name;
-            Balance = balance;
-            MonthlyPayment = monthlyPayment;
-        }
-    }
+        public abstract void AddMoney(decimal amount);
+        public abstract void WithdrawalMoney(decimal amount);
+        public abstract decimal GetMinimumBalance();
+        public abstract decimal GetMonthlyPayment();
+    }  
 }
+
+
