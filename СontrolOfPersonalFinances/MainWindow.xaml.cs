@@ -72,18 +72,15 @@ namespace СontrolOfPersonalFinances
             }
 
         }
-
-        private void AccountReportButton_Click(object sender, RoutedEventArgs e)
+        private void ShowAccountsButton_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < _accountingSystem.accounts.Count; i++)
+            string currentTime = DateTime.Now.ToString("HH:mm:ss");
+            foreach (Account account in _accountingSystem.accounts)
             {
-                
+                ShowAccountsList.Items.Add($"{currentTime} Номер счета :{account.AccountNumber},Название банка :{account.BankName},Баланс:{account.Balance}");
             }
-            foreach(var account in _accountingSystem.accounts)
-            {
 
-            }
-        }    
+        }
     }
 }
        
