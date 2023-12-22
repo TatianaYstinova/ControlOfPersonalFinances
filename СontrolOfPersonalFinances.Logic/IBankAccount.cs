@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using СontrolOfPersonalFinances.Logic.Enums;
 
-namespace СontrolOfPersonalFinances.Logic.Model
+namespace СontrolOfPersonalFinances.Logic
 {
-    public class Account : AAccount
+    public interface IBankAccount
     {
-        public override decimal _minimumBalance { get; } = 0;
-        public override decimal _monthlyPayment { get; } = 0;
+        public decimal _minimumBalance { get; }
+        public decimal _monthlyPayment { get; }
         public decimal Balance { get; set; }
         public string AccountNumber { get; set; }
         public string BankName { get; set; }
         public string Currency { get; set; }
-        public override void WithdrawalMoney(decimal amount)
-        {
-            Balance -= amount;
-        }
+        public AccountType type { get; set; }
     }
 }
