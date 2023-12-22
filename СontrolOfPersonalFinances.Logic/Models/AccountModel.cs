@@ -7,9 +7,8 @@ using СontrolOfPersonalFinances.Logic.Enums;
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
-    public class AccountModel : IBankAccount
-    {
-      
+    public class AccountModel
+    {  
         public decimal Balance { get; set; }
         public string AccountNumber { get; set; }
         public string BankName { get; set; }

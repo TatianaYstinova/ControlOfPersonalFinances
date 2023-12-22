@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows;
 using СontrolOfPersonalFinances.Logic.Enums;
 using СontrolOfPersonalFinances.Logic.Model;
@@ -83,18 +84,33 @@ namespace СontrolOfPersonalFinances
                 ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency} , ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
 
             }
-                 //private void ShowAccountsButton_Click(object sender, RoutedEventArgs e)
-
-                 //{
-                 //  string currentTime = DateTime.Now.ToString("HH:mm:ss");
-                 // foreach (AccountModel account in _accountingSystem.)
-                 //  {
-                 //        ShowAccountsList.Items.Add($"{currentTime} Номер счета :{account.AccountNumber},Название банка :{account.BankName},Баланс:{account.Balance}");
-                 //  }
-
         }
 
-       
+        private void ShowAccountsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(_accountingSystem._transactions.Count == null && _accountingSystem._accounts.Count == null && _accountingSystem._categories.Count== null) 
+            {
+                ShowAccountsList.Items.Add("Информация отсутствует");
+            }
+            else
+            {
+                ShowAccountsList.Items.Add("Транзакции:");
+                foreach(var transaction in _accountingSystem._transactions)
+                {
+                    ShowAccountsList.Items.Add($"Тип транзакции:{transaction.Key}, модель транзакции:{transaction.Value}");
+                }
+                ShowAccountsList.Items.Add("Счета:");
+                foreach(var account in _accountingSystem._accounts)
+                {
+                    ShowAccountsList.Items.Add($"Тип учетной записи:{account.Key},модель учетной записи:{account.Value}");
+                }
+                ShowAccountsList.Items.Add("Категории");
+                foreach(var category in _accountingSystem._categories)
+                {
+                    ShowAccountsList.Items.Add($"Катерогии по ID: {category.Key}, модель категории: {category.Value}");
+                }
+            }
+        }
     }
 }
        
