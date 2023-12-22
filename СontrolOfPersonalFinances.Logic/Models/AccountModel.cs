@@ -7,14 +7,15 @@ using СontrolOfPersonalFinances.Logic.Enums;
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
-    public class Account : IBankAccount
+    public class AccountModel : IBankAccount
     {
-        public  decimal _minimumBalance { get; }
-        public  decimal _monthlyPayment { get; } 
+      
         public decimal Balance { get; set; }
         public string AccountNumber { get; set; }
         public string BankName { get; set; }
         public string Currency { get; set; }
         public AccountType type { get; set; }
+        public string Id {  get; set; }
+        public string Comment { get; set; }
     }
 }

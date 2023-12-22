@@ -9,8 +9,6 @@ namespace СontrolOfPersonalFinances.Logic
 {
     public interface IBankAccount
     {
-        public decimal _minimumBalance { get; }
-        public decimal _monthlyPayment { get; }
         public decimal Balance { get; set; }
         public string AccountNumber { get; set; }
         public string BankName { get; set; }

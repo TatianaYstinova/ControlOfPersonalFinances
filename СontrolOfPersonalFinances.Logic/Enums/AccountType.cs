@@ -11,6 +11,7 @@ namespace СontrolOfPersonalFinances.Logic.Enums
         DebetCard = 1,
         CreditCard =2,
         Cash=3,
-            
+        Debt = 4,
+         
     }
 }

@@ -5,15 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using СontrolOfPersonalFinances.Logic;
+using СontrolOfPersonalFinances.Logic.Enums;
 using СontrolOfPersonalFinances.Logic.Model;
 
 namespace СontrolOfPersonalFinances
@@ -34,53 +26,75 @@ namespace СontrolOfPersonalFinances
 
             if (Account.IsChecked == true)
             {
-                selectedItem = "Счет";
-                Account newAccount = new Account();
+                selectedItem = "Кредитная карта";
+                AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
                 newAccount.BankName = BankLabelText.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
                 newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = IdBox.Text; 
 
-                _accountingSystem.accounts.Add(newAccount);
+                _accountingSystem._accounts.Add(AccountType.CreditCard,newAccount);
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency} ,ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
+            }
+            else if (Cash.IsChecked == true)
+            {
+                selectedItem = "Наличные";
+                AccountModel newAccount = new AccountModel();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = BankLabelText.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = IdBox.Text;
+
+                _accountingSystem._accounts.Add(AccountType.Cash, newAccount);
                 ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency}");
+
             }
-            else if (Cretdit.IsChecked == true)
+
+            else if (DebetCart.IsChecked == true)
             {
-                selectedItem = "Кредит";
-                Credit newCredit = new Credit();
-                newCredit.AccountNumber = NumberLabelText.Text;
-                newCredit.BankName = BankLabelText.Text;
-                newCredit.Balance = decimal.Parse(BalansLabelText.Text);
-                newCredit.InterestRate = Convert.ToDecimal(InterestRateLabelText.Text);
-                newCredit.Term = int.Parse(TermLabelText.Text);
+                selectedItem = "Дебетовая карта";
+                AccountModel newAccount = new AccountModel();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = BankLabelText.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = IdBox.Text;
 
-                _accountingSystem.сredit.Add(newCredit);
-                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newCredit.AccountNumber}, Название банка: {newCredit.BankName}, Баланс: {newCredit.Balance}, Процентная ставка: {newCredit.InterestRate}, Срок: {newCredit.Term}");
-
+                _accountingSystem._accounts.Add(AccountType.DebetCard, newAccount);
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency}, ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
             }
-            else if (Installment.IsChecked == true)
+            else if (Debt.IsChecked == true)
             {
-                selectedItem = "Рассрочка";
-                Installment newInstallment = new Installment();
-                newInstallment.AccountNumber = NumberLabelText.Text;
-                newInstallment.BankName = BankLabelText.Text;
-                newInstallment.Balance = decimal.Parse(BalansLabelText.Text);
-                newInstallment.Term = int.Parse(TermLabelText.Text);
+                selectedItem = "Долг";
+                AccountModel newAccount = new AccountModel();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = BankLabelText.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = IdBox.Text;
 
-                _accountingSystem.installment.Add(newInstallment);
-                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newInstallment.AccountNumber}, Название банка: {newInstallment.BankName}, Баланс: {newInstallment.Balance}, Срок: {newInstallment.Term}");
+                _accountingSystem._accounts.Add(AccountType.Debt, newAccount);
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency} , ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
+
             }
+                 //private void ShowAccountsButton_Click(object sender, RoutedEventArgs e)
+
+                 //{
+                 //  string currentTime = DateTime.Now.ToString("HH:mm:ss");
+                 // foreach (AccountModel account in _accountingSystem.)
+                 //  {
+                 //        ShowAccountsList.Items.Add($"{currentTime} Номер счета :{account.AccountNumber},Название банка :{account.BankName},Баланс:{account.Balance}");
+                 //  }
 
         }
-        private void ShowAccountsButton_Click(object sender, RoutedEventArgs e)
-        {
-            string currentTime = DateTime.Now.ToString("HH:mm:ss");
-            foreach (Account account in _accountingSystem.accounts)
-            {
-                ShowAccountsList.Items.Add($"{currentTime} Номер счета :{account.AccountNumber},Название банка :{account.BankName},Баланс:{account.Balance}");
-            }
 
-        }
+       
     }
 }
        

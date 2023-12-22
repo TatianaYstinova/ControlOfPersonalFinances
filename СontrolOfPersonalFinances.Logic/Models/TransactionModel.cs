@@ -4,19 +4,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
+using СontrolOfPersonalFinances.Logic.Enums;
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
-    public class Transaction
+    public class TransactionModel
     { 
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Summ { get; set; }
         public DateTime time { get; set; }
-        public Account Account { get; set; }
-        public DateTime Date { get; set; }
-        public TraceEventType type { get; set; }
-        public bool IsApproved {  get; set; }
+        public int AccountId {  get; set; }
         public int СategoriesId {  get; set; } 
+        public TransactionType Type { get; set; }
+        public bool IsApproved {  get; set; }
+
     }
 }
