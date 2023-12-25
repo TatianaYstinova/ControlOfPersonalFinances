@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using СontrolOfPersonalFinances.Logic.Enums;
 using СontrolOfPersonalFinances.Logic.Models;
+
 
 namespace СontrolOfPersonalFinances.Logic.Model
 {
@@ -14,6 +13,7 @@ namespace СontrolOfPersonalFinances.Logic.Model
         public Dictionary<TransactionType, TransactionModel> _transactions;
         public Dictionary<AccountType, AccountModel> _accounts;
         public Dictionary<int,CategoryModel> _categories;
+       
 
         public int _transactionsCategoriesLastId;// перечисление категории
         public PersonalFinanceAccountingSystem() 
@@ -23,6 +23,7 @@ namespace СontrolOfPersonalFinances.Logic.Model
             _categories = new Dictionary<int,CategoryModel>();
 
              _transactionsCategoriesLastId = 1;
+            
         }
         public void AddCategory(CategoryModel category)
         {
@@ -42,5 +43,14 @@ namespace СontrolOfPersonalFinances.Logic.Model
         {
             return _categories.Values.ToList();
         }
+        public void WithdrawMoney(AccountModel accountModel, int ammount)// снятие
+        {
+            accountModel.Balance -= ammount;
+        }
+        public void AddMomey(AccountModel accountModel,int ammount)
+        {
+            accountModel.Balance += ammount;
+        }
+
     }
 }

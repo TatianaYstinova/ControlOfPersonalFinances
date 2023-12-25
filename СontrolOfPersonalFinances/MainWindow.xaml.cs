@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
+using System.Threading;
+using System.Timers;
 using System.Windows;
+using System.Windows.Controls;
 using СontrolOfPersonalFinances.Logic.Enums;
 using СontrolOfPersonalFinances.Logic.Model;
 
@@ -14,6 +11,7 @@ namespace СontrolOfPersonalFinances
     public partial class MainWindow : Window
     {
         PersonalFinanceAccountingSystem _accountingSystem { get; set; }
+       
 
         public MainWindow()
         {
@@ -30,9 +28,9 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Кредитная карта";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = BankLabelText.Text;
+               newAccount.BankName = TextBoxBank.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
-                newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Currency = TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;
                 newAccount.Id = IdBox.Text; 
 
@@ -44,9 +42,9 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Наличные";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = BankLabelText.Text;
+                newAccount.BankName = TextBoxBank.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
-                newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Currency =TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;
                 newAccount.Id = IdBox.Text;
 
@@ -60,9 +58,9 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Дебетовая карта";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = BankLabelText.Text;
+                newAccount.BankName = TextBoxBank.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
-                newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Currency = TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;
                 newAccount.Id = IdBox.Text;
 
@@ -74,9 +72,9 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Долг";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = BankLabelText.Text;
+                newAccount.BankName =TextBoxBank.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
-                newAccount.Currency = СurrencyLabelText.Text;
+                newAccount.Currency = TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;
                 newAccount.Id = IdBox.Text;
 
@@ -110,6 +108,23 @@ namespace СontrolOfPersonalFinances
                     ShowAccountsList.Items.Add($"Катерогии по ID: {category.Key}, модель категории: {category.Value}");
                 }
             }
+        }
+        private void AddMoney_Click(object sender, RoutedEventArgs e)
+        {
+            AccountModel account = new AccountModel();
+            account.Balance = decimal.Parse(NumberText.Text);
+            int summ = Int32.Parse(SummText.Text);
+            _accountingSystem.AddMomey(account, summ);
+            ListBoxOne.Items.Add(account.Balance);
+        }
+
+        private void WithdrawMoney_Click(object sender, RoutedEventArgs e)
+        {
+            AccountModel model = new AccountModel();
+            model.Balance = decimal.Parse(NumberText.Text);
+            int summ =Int32.Parse(SummText.Text);
+            _accountingSystem.WithdrawMoney(model, summ);
+            ListBoxOne.Items.Add(model.Balance);
         }
     }
 }
