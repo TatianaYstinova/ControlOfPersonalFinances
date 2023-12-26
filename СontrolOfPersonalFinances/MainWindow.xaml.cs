@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Security.Principal;
 using System.Threading;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using СontrolOfPersonalFinances.Logic.Enums;
 using СontrolOfPersonalFinances.Logic.Model;
 using СontrolOfPersonalFinances.Logic.Models;
@@ -22,21 +24,68 @@ namespace СontrolOfPersonalFinances
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             string currentTime = DateTime.Now.ToString("HH:mm:ss");
-           
-               AccountModel newAccount = new AccountModel();
-               newAccount.AccountNumber = NumberLabelText.Text;
-               newAccount.BankName = TextBoxBank.Text;
-               newAccount.Balance = decimal.Parse(BalansLabelText.Text);
-               newAccount.Currency = TextBoxCurrent.Text;
-               newAccount.Comment = CommentsBox.Text;
-               newAccount.Id = Int32.Parse(IdBox.Text); 
-               _accountingSystem._accounts.Add(Convert.ToInt32(AccountType.Cash), newAccount);
-               ListBoxOne.Items.Add($"{currentTime} Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency} , Ваш ID : {newAccount.Id}, Комментарий:{newAccount.Comment}");
-               ListBoxOne.Items.Clear();
+            string selectedItem = "";
 
+
+            if (DebitCard_.IsChecked == true)
+            {
+                selectedItem = "Дебетовая карта";
+                AccountModel newAccount = new AccountModel();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = TextBoxBank.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = TextBoxCurrent.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = Int32.Parse(IdBox.Text);
+
+                _accountingSystem._accounts.Add(Convert.ToInt32(AccountType.DebetCard), newAccount);
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency} ,ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
+            }
+            else if (CreditCard.IsChecked == true)
+            {
+                selectedItem = "Кредитная карта";
+                AccountModel newAccount = new AccountModel();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = TextBoxBank.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = TextBoxCurrent.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = Int32.Parse(IdBox.Text);
+
+                _accountingSystem._accounts.Add(Convert.ToInt32(AccountType.CreditCard), newAccount);
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency}");
+
+            }
+            else if (Cash.IsChecked == true)
+            {
+                selectedItem = "Наличные";
+                AccountModel newAccount = new AccountModel();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = TextBoxBank.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = TextBoxCurrent.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = Int32.Parse(IdBox.Text);
+
+                _accountingSystem._accounts.Add(Convert.ToInt32(AccountType.Cash), newAccount);
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency}, ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
+            }
+            else if (Debt1.IsChecked == true)
+            {
+                selectedItem = "Долг";
+                AccountModel newAccount = new AccountModel();
+                newAccount.AccountNumber = NumberLabelText.Text;
+                newAccount.BankName = TextBoxBank.Text;
+                newAccount.Balance = decimal.Parse(BalansLabelText.Text);
+                newAccount.Currency = TextBoxCurrent.Text;
+                newAccount.Comment = CommentsBox.Text;
+                newAccount.Id = Int32.Parse(IdBox.Text);
+
+                _accountingSystem._accounts.Add(Convert.ToInt32(AccountType.Cash), newAccount);
+                ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem} , Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта:{newAccount.Currency}, ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
+            }
         }
-
-        private void AddMoney_Click(object sender, RoutedEventArgs e)
+         private void AddMoney_Click(object sender, RoutedEventArgs e)
         {
             AccountModel account = new AccountModel();
             account.AccountNumber = NumberText.Text;
@@ -87,18 +136,33 @@ namespace СontrolOfPersonalFinances
             List.Items.Add(_accountingSystem.GetAllCategoryModels);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddTransaction_Click(object sender, RoutedEventArgs e)
         {
+            string currentTime = DateTime.Now.ToString("HH:mm:ss");
+
             TransactionModel transaction = new TransactionModel();
             transaction.Name = NumberAcc.Text;
             transaction.Summ = decimal.Parse(Summ.Text);
             transaction.Id =Int32.Parse(NumberID.Text);
 
-            _accountingSystem.AddTransaction(transaction);
-            ListBox.Items.Add($"Тип:{}")
+            _accountingSystem._transactions.Add(TabIndex, transaction);
+            ListBox.Items.Add($"{currentTime} Вы добавили ,Номер счета:{transaction.Name},Cумму:{transaction.Summ},Номер ID :{transaction.Id}");
         }
 
-        
+
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    TransactionModel transaction = new TransactionModel();
+        //    transaction.Name = NumberAcc.Text;
+        //    transaction.Summ = decimal.Parse(Summ.Text);
+        //    transaction.Id =Int32.Parse(NumberID.Text);
+
+        //    _accountingSystem.AddTransaction(transaction);
+        //    ListBox.Items.Add($"Тип:{}")
+        //}
+
+
     }
 }
        

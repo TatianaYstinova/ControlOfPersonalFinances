@@ -11,32 +11,34 @@
     </Window.Resources>
     <TabControl>
         <TabItem Header="Счет" Margin="-2,-2,-20,0">
-            <Grid Background="MistyRose">
+            <Grid x:Name="Debt" Background="MistyRose">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="102*"/>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="757*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="label" HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top" Width="117" Content="Номер счета:" Grid.ColumnSpan="2"/>
-                <Label Content="Банк:" HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2"/>
-                <Label Content="Валюта:" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2"/>
-                <Label Content="ID:" HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2"/>
-                <Label Content="Баланс :" HorizontalAlignment="Center" Margin="0,132,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2"/>
-                <Label Content="Комментарий :" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2"/>
-                <ListBox x:Name="ListBoxOne" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="420,5,0,5" Grid.Column="2"/>
-                <TextBox x:Name="NumberLabelText" HorizontalAlignment="Left" Margin="0,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Grid.Column="2"/>
-                <TextBox x:Name="TextBoxBank" HorizontalAlignment="Left" Margin="0,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Grid.Column="2"/>
-                <TextBox x:Name="TextBoxCurrent" HorizontalAlignment="Left" Margin="0,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Grid.Column="2"/>
-                <TextBox x:Name="IdBox" HorizontalAlignment="Left" Margin="0,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Grid.Column="2"/>
-                <TextBox x:Name="BalansLabelText" HorizontalAlignment="Left" Margin="0,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Grid.Column="2"/>
-                <TextBox x:Name="CommentsBox" HorizontalAlignment="Left" Margin="0,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Grid.Column="2"/>
-                <Button x:Name="OkButton" Content="Добавить счет" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Height="70" Width="118" FontWeight="Bold" FontSize="14" Click="OkButton_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
-                <Label Content="Номер счета:" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.526,-0.767" Width="107" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="NumberText" HorizontalAlignment="Left" Margin="30,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="1" Grid.ColumnSpan="2"/>
-                <Button Content="Добавить денег" HorizontalAlignment="Left" Margin="241,249,0,0" VerticalAlignment="Top" Height="62" Width="138" Click="AddMoney_Click" Grid.Column="2"/>
-                <Button Content="Снять денег" HorizontalAlignment="Left" Margin="241,351,0,0" VerticalAlignment="Top" Height="68" Width="138" Click="WithdrawMoney_Click" Grid.Column="2"/>
-                <Label Content="Сумма:" HorizontalAlignment="Left" Margin="10,351,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.526,-0.767" Width="107" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="SummText" HorizontalAlignment="Left" Margin="30,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label x:Name="label" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="117" Content="Номер счета:"/>
+                <Label Content="Банк:" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="117"/>
+                <Label Content="Валюта:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="117"/>
+                <Label Content="ID:" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="117"/>
+                <Label Content="Баланс :" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="117"/>
+                <Label Content="Комментарий :" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="117"/>
+                <ListBox x:Name="ListBoxOne" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="557,5,0,5"/>
+                <TextBox x:Name="NumberLabelText" HorizontalAlignment="Left" Margin="137,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                <TextBox x:Name="TextBoxBank" HorizontalAlignment="Left" Margin="137,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                <TextBox x:Name="TextBoxCurrent" HorizontalAlignment="Left" Margin="137,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                <TextBox x:Name="IdBox" HorizontalAlignment="Left" Margin="137,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                <TextBox x:Name="BalansLabelText" HorizontalAlignment="Left" Margin="137,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                <TextBox x:Name="CommentsBox" HorizontalAlignment="Left" Margin="137,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                <Button x:Name="OkButton" Content="Добавить счет" HorizontalAlignment="Left" Margin="132,0,0,0" VerticalAlignment="Center" Height="70" Width="118" FontWeight="Bold" FontSize="14" Click="OkButton_Click"/>
+                <Label Content="Номер счета:" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.526,-0.767" Width="107"/>
+                <TextBox x:Name="NumberText" HorizontalAlignment="Left" Margin="132,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+                <Button Content="Добавить денег" HorizontalAlignment="Center" Margin="0,249,0,0" VerticalAlignment="Top" Height="62" Width="138" Click="AddMoney_Click"/>
+                <Button Content="Снять денег" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Height="68" Width="138" Click="WithdrawMoney_Click"/>
+                <Label Content="Сумма:" HorizontalAlignment="Left" Margin="10,351,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.526,-0.767" Width="107"/>
+                <TextBox x:Name="SummText" HorizontalAlignment="Left" Margin="132,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+                <RadioButton x:Name="DebitCard_" Content="Дебетовая карта" HorizontalAlignment="Left" Margin="417,29,0,0" VerticalAlignment="Top" Width="125"/>
+                <RadioButton x:Name="CreditCard" Content="Кредитная карта" HorizontalAlignment="Left" Margin="417,61,0,0" VerticalAlignment="Top" Width="125"/>
+                <RadioButton x:Name="Cash" Content="Наличные" HorizontalAlignment="Left" Margin="417,90,0,0" VerticalAlignment="Top" Width="125"/>
+                <RadioButton x:Name="Debt1" Content="Долг" HorizontalAlignment="Left" Margin="417,116,0,0" VerticalAlignment="Top" Width="125"/>
             </Grid>
         </TabItem>
         <TabItem Header="Категории" Margin="18,-2,-16,0">
@@ -56,33 +58,32 @@
             </Grid>
         </TabItem>
         <TabItem Header="Прогноз" Margin="0,-2,-17,0" HorizontalAlignment="Right" Width="98">
-            <Grid Background="#FFE5E5E5">
+            <Grid Background="MistyRose">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
             </Grid>
         </TabItem>
         <TabItem Header="Долги" Margin="17,-2,-42,0">
-            <Grid Background="#FFE5E5E5"/>
+            <Grid Background="MistyRose"></Grid>
         </TabItem>
         <TabItem Header="Платежи" Margin="0,-2,-42,0" HorizontalAlignment="Right" Width="104">
-            <Grid Background="#FFE5E5E5">
+            <Grid Background="MistyRose">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ListBox x:Name="ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="52,24,335,255"/>
                 <Label HorizontalAlignment="Left" Margin="617,19,0,0" VerticalAlignment="Top" Height="30" Width="210" Content="         Номер счета:" FontWeight="Bold" FontSize="16"/>
                 <TextBox x:Name="NumberAcc" HorizontalAlignment="Left" Margin="617,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40"/>
-                <Button Content="Добавить  перевод" Margin="52,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="61" Width="135" FontWeight="Bold" HorizontalAlignment="Left" FontSize="14" Click="Button_Click"/>
+                <Button x:Name="AddTransaction" Content="Добавить  перевод" Margin="52,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="61" Width="135" FontWeight="Bold" HorizontalAlignment="Left" FontSize="14" Click="AddTransaction_Click"/>
                 <Button Content="Удалить перевод" HorizontalAlignment="Left" Margin="272,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="61" Width="135" FontWeight="Bold" FontSize="14"/>
                 <Button Content="Все переводы по ID" HorizontalAlignment="Left" Margin="52,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="81" Width="135" FontWeight="Bold"/>
                 <Button Content="Отчет о переводах" HorizontalAlignment="Left" Margin="272,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="81" Width="135" FontWeight="Bold"/>
-                <Label Content="            Номер ID:" HorizontalAlignment="Left" Margin="617,129,0,0" VerticalAlignment="Top" Height="30" Width="210" FontWeight="Bold" FontSize="16"/>
+                <Label Content=" Номер ID:" HorizontalAlignment="Left" Margin="617,129,0,0" VerticalAlignment="Top" Height="30" Width="210" FontWeight="Bold" FontSize="16"/>
                 <TextBox x:Name="NumberID" HorizontalAlignment="Left" Margin="617,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40"/>
-                <Label Content="                Сумма:" HorizontalAlignment="Left" Margin="617,249,0,0" VerticalAlignment="Top" Height="30" Width="210" FontWeight="Bold" FontSize="16"/>
-                <TextBox x:Name="Summ" HorizontalAlignment="Left" Margin="617,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40" TextChanged="TextBox_TextChanged"/>
+                <Label Content="Сумма:" HorizontalAlignment="Left" Margin="617,249,0,0" VerticalAlignment="Top" Height="30" Width="210" FontWeight="Bold" FontSize="16"/>
+                <TextBox x:Name="Summ" HorizontalAlignment="Left" Margin="617,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40"/>
                 <RadioButton x:Name="InIncome" Content="Доход" HorizontalAlignment="Left" Margin="467,234,0,0" VerticalAlignment="Top" Width="118"/>
-                <RadioButton x:Name="Outcome" Content="Расход" HorizontalAlignment="Left" Margin="467,267,0,0" VerticalAlignment="Top" Width="118"/>
             </Grid>
         </TabItem>
     </TabControl>
