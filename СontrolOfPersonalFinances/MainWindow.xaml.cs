@@ -149,19 +149,37 @@ namespace СontrolOfPersonalFinances
             ListBox.Items.Add($"{currentTime} Вы добавили ,Номер счета:{transaction.Name},Cумму:{transaction.Summ},Номер ID :{transaction.Id}");
         }
 
+        private void RemoveTransactoin_Click(object sender, RoutedEventArgs e)
+        {
+            string currentTime = DateTime.Now.ToString("HH:mm:ss");
+            TransactionModel transaction = new TransactionModel();
+            transaction.Name = NumberAcc.Text;
+            transaction.Id=Int32.Parse(NumberID.Text);
+            _accountingSystem.DeleteTransactionById(transaction.Id);
+            ListBox.Items.Add($"{currentTime} Вы удалили, Номер счета:{transaction.Name},Cумму:{transaction.Summ},Номер ID :{transaction.Id}");
+        }
 
+        private void TransactionID_Click(object sender, RoutedEventArgs e)
+        {
+            string currentTime = DateTime.Now.ToString("HH:mm:ss");
+            TransactionModel transaction = new TransactionModel();
+            transaction.Name = NumberAcc.Text;
+            transaction.Id = Int32.Parse(NumberID.Text);
+            _accountingSystem.GetCategoryModelById(transaction.Id);
+            ListBox.Items.Add($"{currentTime} Номер счета:{transaction.Name},Cумму:{transaction.Summ},Номер ID :{transaction.Id}");
+        }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    TransactionModel transaction = new TransactionModel();
-        //    transaction.Name = NumberAcc.Text;
-        //    transaction.Summ = decimal.Parse(Summ.Text);
-        //    transaction.Id =Int32.Parse(NumberID.Text);
+        private void Report_Click(object sender, RoutedEventArgs e)
+        {
+            string currentTime = DateTime.Now.ToString("HH:mm:ss");
+            TransactionModel transaction = new TransactionModel();
+            transaction.Name = NumberAcc.Text;
+            transaction.Id = Int32.Parse(NumberID.Text);
+            transaction.Summ=decimal.Parse(Summ.Text);
+            _accountingSystem.GetAllTransactionModels();
+            ListBox.Items.Add($"{currentTime} Номер счета:{transaction.Name},Cумму:{transaction.Summ},Номер ID :{transaction.Id}");
 
-        //    _accountingSystem.AddTransaction(transaction);
-        //    ListBox.Items.Add($"Тип:{}")
-        //}
-
+        }
 
     }
 }
