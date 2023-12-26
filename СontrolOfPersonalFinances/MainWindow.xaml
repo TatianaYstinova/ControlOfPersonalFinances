@@ -23,12 +23,11 @@
                 <Label Content="Комментарий :" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="117"/>
                 <ListBox x:Name="ListBoxOne" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="557,5,0,5"/>
                 <TextBox x:Name="NumberLabelText" HorizontalAlignment="Left" Margin="137,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
-                <TextBox x:Name="TextBoxBank" HorizontalAlignment="Left" Margin="137,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                 <TextBox x:Name="TextBoxCurrent" HorizontalAlignment="Left" Margin="137,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                 <TextBox x:Name="IdBox" HorizontalAlignment="Left" Margin="137,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                 <TextBox x:Name="BalansLabelText" HorizontalAlignment="Left" Margin="137,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                 <TextBox x:Name="CommentsBox" HorizontalAlignment="Left" Margin="137,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
-                <Button x:Name="OkButton" Content="Добавить счет" HorizontalAlignment="Left" Margin="132,0,0,0" VerticalAlignment="Center" Height="70" Width="118" FontWeight="Bold" FontSize="14" Click="OkButton_Click"/>
+                <Button x:Name="OkButton" Content="Добавить счет" HorizontalAlignment="Left" Margin="173,0,0,0" VerticalAlignment="Center" Height="70" Width="118" FontWeight="Bold" FontSize="14" Click="OkButton_Click"/>
                 <Label Content="Номер счета:" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.526,-0.767" Width="107"/>
                 <TextBox x:Name="NumberText" HorizontalAlignment="Left" Margin="132,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
                 <Button Content="Добавить денег" HorizontalAlignment="Center" Margin="0,249,0,0" VerticalAlignment="Top" Height="62" Width="138" Click="AddMoney_Click"/>
@@ -39,6 +38,7 @@
                 <RadioButton x:Name="CreditCard" Content="Кредитная карта" HorizontalAlignment="Left" Margin="417,61,0,0" VerticalAlignment="Top" Width="125"/>
                 <RadioButton x:Name="Cash" Content="Наличные" HorizontalAlignment="Left" Margin="417,90,0,0" VerticalAlignment="Top" Width="125"/>
                 <RadioButton x:Name="Debt1" Content="Долг" HorizontalAlignment="Left" Margin="417,116,0,0" VerticalAlignment="Top" Width="125"/>
+                <ComboBox x:Name="BankList" Height="20" Margin="137,56,517,380"/>
             </Grid>
         </TabItem>
         <TabItem Header="Категории" Margin="18,-2,-16,0">
@@ -84,6 +84,7 @@
                 <Label Content="Сумма:" HorizontalAlignment="Left" Margin="617,249,0,0" VerticalAlignment="Top" Height="30" Width="210" FontWeight="Bold" FontSize="16"/>
                 <TextBox x:Name="Summ" HorizontalAlignment="Left" Margin="617,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40"/>
                 <RadioButton x:Name="InIncome" Content="Доход" HorizontalAlignment="Left" Margin="467,234,0,0" VerticalAlignment="Top" Width="118"/>
+
             </Grid>
         </TabItem>
     </TabControl>

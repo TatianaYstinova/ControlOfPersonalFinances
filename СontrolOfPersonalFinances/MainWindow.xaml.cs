@@ -15,11 +15,12 @@ namespace СontrolOfPersonalFinances
     {
         PersonalFinanceAccountingSystem _accountingSystem { get; set; }
        
-
         public MainWindow()
         {
             InitializeComponent();
             _accountingSystem = new PersonalFinanceAccountingSystem();
+
+            this.BankList.ItemsSource = new string[] { "Сбербанк", "ВТБ" ,"Открытие","Альфа-Бфнк" };
         }
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
@@ -32,12 +33,12 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Дебетовая карта";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = TextBoxBank.Text;
+                newAccount.BankName = BankList.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
                 newAccount.Currency = TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;
                 newAccount.Id = Int32.Parse(IdBox.Text);
-
+                
                 _accountingSystem._accounts.Add(Convert.ToInt32(AccountType.DebetCard), newAccount);
                 ListBoxOne.Items.Add($"{currentTime}Тип: {selectedItem}, Номер счета: {newAccount.AccountNumber}, Название банка: {newAccount.BankName}, Баланс: {newAccount.Balance}, Валюта: {newAccount.Currency} ,ID операции {newAccount.Id},Комментарий:{newAccount.Comment}");
             }
@@ -46,7 +47,7 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Кредитная карта";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = TextBoxBank.Text;
+                newAccount.BankName = BankList.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
                 newAccount.Currency = TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;
@@ -61,7 +62,7 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Наличные";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = TextBoxBank.Text;
+                newAccount.BankName = BankList.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
                 newAccount.Currency = TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;
@@ -75,7 +76,7 @@ namespace СontrolOfPersonalFinances
                 selectedItem = "Долг";
                 AccountModel newAccount = new AccountModel();
                 newAccount.AccountNumber = NumberLabelText.Text;
-                newAccount.BankName = TextBoxBank.Text;
+                newAccount.BankName = BankList.Text;
                 newAccount.Balance = decimal.Parse(BalansLabelText.Text);
                 newAccount.Currency = TextBoxCurrent.Text;
                 newAccount.Comment = CommentsBox.Text;

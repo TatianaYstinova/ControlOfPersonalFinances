@@ -23,7 +23,7 @@ namespace СontrolOfPersonalFinances.Logic.Model
         {
             AccountModel accountModel = new AccountModel();
 
-            if(ammount<= accountModel.Balance)
+            if(ammount <= accountModel.Balance)
             {
                 accountModel.Balance -= ammount;
 
