@@ -10,9 +10,7 @@ namespace СontrolOfPersonalFinances.Logic.Models
     public class SalaryModel
     {// зарплата
         public string NumberAccount {  get; set; }
-         public void SendSalary(int amount, string accountNumber)
-        {
-            
-        }
+        public decimal Summ {  get; set; }
+         
     }
 }

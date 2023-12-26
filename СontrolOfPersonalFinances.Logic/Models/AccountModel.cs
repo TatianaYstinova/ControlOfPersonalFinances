@@ -14,7 +14,7 @@ namespace СontrolOfPersonalFinances.Logic.Model
         public string BankName { get; set; }
         public string Currency { get; set; }
         public AccountType type { get; set; }
-        public string Id {  get; set; }
+        public int Id {  get; set; }
         public string Comment { get; set; }
     }
 }
