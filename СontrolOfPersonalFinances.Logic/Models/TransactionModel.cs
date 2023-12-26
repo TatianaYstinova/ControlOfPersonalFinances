@@ -19,6 +19,21 @@ namespace СontrolOfPersonalFinances.Logic.Model
         public int СategoriesId {  get; set; } 
         public TransactionType Type { get; set; }
         public bool IsApproved {  get; set; }
+        public void CheckSufficientFunds(int ammount)
+        {
+            AccountModel accountModel = new AccountModel();
+
+            if(ammount<= accountModel.Balance)
+            {
+                accountModel.Balance -= ammount;
+
+            }
+            else
+            {
+                return;
+            }
+           
+        }
 
     }
 }

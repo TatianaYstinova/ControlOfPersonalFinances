@@ -112,6 +112,7 @@ namespace СontrolOfPersonalFinances.Logic.Model
         {
             return _accounts.Values.ToList();
         }
+       
 
 
     }

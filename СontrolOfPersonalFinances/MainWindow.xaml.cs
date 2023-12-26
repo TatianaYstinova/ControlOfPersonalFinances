@@ -86,6 +86,19 @@ namespace СontrolOfPersonalFinances
             _accountingSystem.GetAllCategoryModels();
             List.Items.Add(_accountingSystem.GetAllCategoryModels);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TransactionModel transaction = new TransactionModel();
+            transaction.Name = NumberAcc.Text;
+            transaction.Summ = decimal.Parse(Summ.Text);
+            transaction.Id =Int32.Parse(NumberID.Text);
+
+            _accountingSystem.AddTransaction(transaction);
+            ListBox.Items.Add($"Тип:{}")
+        }
+
+        
     }
 }
        

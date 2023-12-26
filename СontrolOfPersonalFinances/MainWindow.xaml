@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:СontrolOfPersonalFinances"
-        xmlns:controls="clr-namespace:СontrolOfPersonalFinances.UL.Components"
         mc:Ignorable="d"
         Title="MainPage" Height="500" Width="900"
     xmlns:System="clr-namespace:System;assembly=System.Runtime">
@@ -41,26 +40,50 @@
             </Grid>
         </TabItem>
         <TabItem Header="Категории" Margin="18,-2,-16,0">
-            <Grid Background="#FFE5E5E5">
-                <Label x:Name="NameCategory" Content="Название :" HorizontalAlignment="Left" Margin="47,54,0,0" VerticalAlignment="Top" Width="165" FontWeight="Bold" FontSize="14" Height="42"/>
+            <Grid Background="MistyRose">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="NameCategory" Content="Название :" HorizontalAlignment="Left" Margin="17,36,0,0" VerticalAlignment="Top" Width="165" FontWeight="Bold" FontSize="14" Height="42"/>
                 <Button x:Name="AddCategory" Content="Добавить категорию" HorizontalAlignment="Left" Margin="512,29,0,0" VerticalAlignment="Top" Height="77" Width="335" FontWeight="Bold" FontSize="16" Click="AddCategory_Click"/>
-                <TextBox x:Name="NameCategoryText" HorizontalAlignment="Left" Margin="167,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="22"/>
+                <TextBox x:Name="NameCategoryText" HorizontalAlignment="Left" Margin="157,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="22"/>
                 <Button x:Name="DeleteCategory" HorizontalAlignment="Left" Margin="512,137,0,0" VerticalAlignment="Top" Height="77" Width="335" Content="Удалить категорию" FontWeight="Bold" FontSize="16" Click="DeleteCategory_Click"/>
                 <Button x:Name="IDCategoryButton" Content="Получить по ID" HorizontalAlignment="Left" Margin="512,247,0,0" VerticalAlignment="Top" Height="77" Width="335" FontWeight="Bold" FontSize="16" Click="IDCategoryButton_Click"/>
                 <Button x:Name="CategoryList" Content="Все категории" HorizontalAlignment="Left" Margin="512,354,0,0" VerticalAlignment="Top" Height="77" Width="335" FontWeight="Bold" FontSize="18" Click="CategoryList_Click"/>
                 <ListBox x:Name="List" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="27,137,427,37"/>
-                <Label x:Name="IDCategory" Content="ID" HorizontalAlignment="Left" Margin="47,90,0,0" VerticalAlignment="Top" Width="165" FontSize="18" Height="42" FontWeight="Bold"/>
-                <TextBox x:Name="CategoryIdText" HorizontalAlignment="Left" Margin="167,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="22"/>
+                <Label x:Name="IDCategory" Content="ID" HorizontalAlignment="Left" Margin="17,64,0,0" VerticalAlignment="Top" Width="165" FontSize="18" Height="42" FontWeight="Bold"/>
+                <TextBox x:Name="CategoryIdText" HorizontalAlignment="Left" Margin="157,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="22"/>
             </Grid>
         </TabItem>
-        <TabItem Header="Накопления" Margin="0,-2,-17,0" HorizontalAlignment="Right" Width="98">
-            <Grid Background="#FFE5E5E5"/>
+        <TabItem Header="Прогноз" Margin="0,-2,-17,0" HorizontalAlignment="Right" Width="98">
+            <Grid Background="#FFE5E5E5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
         </TabItem>
         <TabItem Header="Долги" Margin="17,-2,-42,0">
             <Grid Background="#FFE5E5E5"/>
         </TabItem>
         <TabItem Header="Платежи" Margin="0,-2,-42,0" HorizontalAlignment="Right" Width="104">
-            <Grid Background="#FFE5E5E5"/>
+            <Grid Background="#FFE5E5E5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox x:Name="ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="52,24,335,255"/>
+                <Label HorizontalAlignment="Left" Margin="617,19,0,0" VerticalAlignment="Top" Height="30" Width="210" Content="         Номер счета:" FontWeight="Bold" FontSize="16"/>
+                <TextBox x:Name="NumberAcc" HorizontalAlignment="Left" Margin="617,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40"/>
+                <Button Content="Добавить  перевод" Margin="52,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="61" Width="135" FontWeight="Bold" HorizontalAlignment="Left" FontSize="14" Click="Button_Click"/>
+                <Button Content="Удалить перевод" HorizontalAlignment="Left" Margin="272,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="61" Width="135" FontWeight="Bold" FontSize="14"/>
+                <Button Content="Все переводы по ID" HorizontalAlignment="Left" Margin="52,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="81" Width="135" FontWeight="Bold"/>
+                <Button Content="Отчет о переводах" HorizontalAlignment="Left" Margin="272,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.271,-1.749" Height="81" Width="135" FontWeight="Bold"/>
+                <Label Content="            Номер ID:" HorizontalAlignment="Left" Margin="617,129,0,0" VerticalAlignment="Top" Height="30" Width="210" FontWeight="Bold" FontSize="16"/>
+                <TextBox x:Name="NumberID" HorizontalAlignment="Left" Margin="617,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40"/>
+                <Label Content="                Сумма:" HorizontalAlignment="Left" Margin="617,249,0,0" VerticalAlignment="Top" Height="30" Width="210" FontWeight="Bold" FontSize="16"/>
+                <TextBox x:Name="Summ" HorizontalAlignment="Left" Margin="617,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="40" TextChanged="TextBox_TextChanged"/>
+                <RadioButton x:Name="InIncome" Content="Доход" HorizontalAlignment="Left" Margin="467,234,0,0" VerticalAlignment="Top" Width="118"/>
+                <RadioButton x:Name="Outcome" Content="Расход" HorizontalAlignment="Left" Margin="467,267,0,0" VerticalAlignment="Top" Width="118"/>
+            </Grid>
         </TabItem>
     </TabControl>
 </Window>
