@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using СontrolOfPersonalFinances.Logic.Enums;
 using СontrolOfPersonalFinances.Logic.Models;
+
 
 
 namespace СontrolOfPersonalFinances.Logic.Model
@@ -50,6 +53,21 @@ namespace СontrolOfPersonalFinances.Logic.Model
         public void AddMomey(AccountModel accountModel,int ammount)
         {
             accountModel.Balance += ammount;
+        }
+        public void SaveAll()// сохранить все 
+        {
+            string json =JsonSerializer.Serialize(this);
+            using (StreamWriter writer = new StreamWriter("File", false)
+            {
+
+                writer.Close();
+            }
+        }
+        public void LoadAll()//прочитать все 
+        {
+            string json;
+            using(StreamReader reader = new StreamReader)
+
         }
 
     }
