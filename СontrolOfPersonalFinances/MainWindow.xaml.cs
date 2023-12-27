@@ -89,18 +89,18 @@ namespace СontrolOfPersonalFinances
 
         private void AddMoney_Click(object sender, RoutedEventArgs e)
         {
-            AccountModel account = new AccountModel();
-
-            account.AccountNumber = NumberText.Text;
+            int accountNumber = Int32.Parse(NumberText.Text);
             int summ = Int32.Parse(SummText.Text);
 
             if (NumberText.Text != string.Empty)
             {
-                if (_accountingSystem._accounts.ContainsKey(Int32.Parse(account.AccountNumber)))
+                if (_accountingSystem._accounts.ContainsKey(accountNumber))
                 {
-                    AccountModel selectedAccount =_accountingSystem._accounts[Convert.ToInt32(account.AccountNumber)];
+                    AccountModel selectedAccount =_accountingSystem._accounts[accountNumber];
+
                     selectedAccount.Balance += summ;
-                    ListBoxOne.Items.Add($"Баланс аккаунта {account.AccountNumber} обновлен на {selectedAccount.Balance}");
+
+                    ListBoxOne.Items.Add($"Баланс аккаунта {selectedAccount.AccountNumber} обновлен на {selectedAccount.Balance}");
                 }
                 else
                 {
@@ -116,17 +116,17 @@ namespace СontrolOfPersonalFinances
 
         private void WithdrawMoney_Click(object sender, RoutedEventArgs e)
         {
-            AccountModel model = new AccountModel();
-
-            model.AccountNumber = NumberText.Text;
+             int AccountNumber =Int32.Parse( NumberText.Text);
             int summ = Int32.Parse(SummText.Text);
 
             if (NumberText.Text != string.Empty) 
             {
-                if (_accountingSystem._accounts.ContainsKey(Int32.Parse(model.AccountNumber)))
+                if (_accountingSystem._accounts.ContainsKey(AccountNumber))
                 {
-                    AccountModel account = _accountingSystem._accounts[Convert.ToInt32(model.AccountNumber)];
+                    AccountModel account = _accountingSystem._accounts[AccountNumber];
+
                     account.Balance -= summ;
+
                     ListBoxOne.Items.Add($"Баланс аккаунта {account.AccountNumber} обновлен на {account.Balance}");
                 }
                 else
