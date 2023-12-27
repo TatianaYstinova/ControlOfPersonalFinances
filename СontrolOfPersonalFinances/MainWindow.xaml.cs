@@ -180,6 +180,13 @@ namespace СontrolOfPersonalFinances
             _accountingSystem.GetAllTransactionModels();
             ListBox.Items.Add($"{currentTime} Номер счета:{transaction.Name},Cумму:{transaction.Summ},Номер ID :{transaction.Id}");
         }
+
+        private void Forecast_Click(object sender, RoutedEventArgs e)
+        {
+            PersonalFinanceAccountingSystem system = new PersonalFinanceAccountingSystem();
+            string monthlyForecast = Convert.ToString(_accountingSystem.CreateMonthlyForecast());
+            ForecastList.Items.Add($"Прогноз на месяц : {monthlyForecast}");
+        }
     }
 }
        

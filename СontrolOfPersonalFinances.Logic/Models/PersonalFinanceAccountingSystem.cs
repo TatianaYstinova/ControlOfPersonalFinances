@@ -112,5 +112,14 @@ namespace СontrolOfPersonalFinances.Logic.Model
         {
             return _accounts.Values.ToList();
         }
+        public decimal CreateMonthlyForecast()
+        {
+            decimal forecast = 0;
+            foreach (TransactionModel transaction in _transactions.Values)
+            {
+                forecast += transaction.Summ;
+            }
+            return forecast;
+        }
     }
 }
