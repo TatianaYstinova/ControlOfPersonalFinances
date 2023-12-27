@@ -9,12 +9,9 @@
     xmlns:System="clr-namespace:System;assembly=System.Runtime">
     <Window.Resources>
     </Window.Resources>
-    <TabControl>
-        <TabItem Header="Счет" Margin="-2,-2,-20,0">
-            <Grid x:Name="Debt" Background="MistyRose">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+    <TabControl Background="MistyRose">
+        <TabItem Header="Счет" Margin="-2,-2,-20,0" >
+            <Grid x:Name="Debt">
                 <Label x:Name="label" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="117" Content="Номер счета:"/>
                 <Label Content="Банк:" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="117"/>
                 <Label Content="Валюта:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="117"/>
@@ -23,6 +20,7 @@
                 <Label Content="Комментарий :" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="117"/>
                 <ListBox x:Name="ListBoxOne" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="557,5,0,5"/>
                 <TextBox x:Name="NumberLabelText" HorizontalAlignment="Left" Margin="137,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                <ComboBox x:Name="BankSelect" Height="20" Width="240" Margin="137,56,517,380"/>
                 <TextBox x:Name="TextBoxCurrent" HorizontalAlignment="Left" Margin="137,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                 <TextBox x:Name="IdBox" HorizontalAlignment="Left" Margin="137,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                 <TextBox x:Name="BalansLabelText" HorizontalAlignment="Left" Margin="137,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
@@ -38,14 +36,11 @@
                 <RadioButton x:Name="CreditCard" Content="Кредитная карта" HorizontalAlignment="Left" Margin="417,61,0,0" VerticalAlignment="Top" Width="125"/>
                 <RadioButton x:Name="Cash" Content="Наличные" HorizontalAlignment="Left" Margin="417,90,0,0" VerticalAlignment="Top" Width="125"/>
                 <RadioButton x:Name="Debt1" Content="Долг" HorizontalAlignment="Left" Margin="417,116,0,0" VerticalAlignment="Top" Width="125"/>
-                <ComboBox x:Name="BankList" Height="20" Margin="137,56,517,380"/>
             </Grid>
         </TabItem>
         <TabItem Header="Категории" Margin="18,-2,-16,0">
             <Grid Background="MistyRose">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+                
                 <Label x:Name="NameCategory" Content="Название :" HorizontalAlignment="Left" Margin="17,36,0,0" VerticalAlignment="Top" Width="165" FontWeight="Bold" FontSize="14" Height="42"/>
                 <Button x:Name="AddCategory" Content="Добавить категорию" HorizontalAlignment="Left" Margin="512,29,0,0" VerticalAlignment="Top" Height="77" Width="335" FontWeight="Bold" FontSize="16" Click="AddCategory_Click"/>
                 <TextBox x:Name="NameCategoryText" HorizontalAlignment="Left" Margin="157,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="22"/>
